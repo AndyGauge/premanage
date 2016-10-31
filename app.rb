@@ -10,7 +10,7 @@ get '/' do
   '<h1>PreManage CSV generator</h1> <h2>Create CSV and upload to premanage</h2> 
   <p>Upload a Valant facesheet report to create a CSV for PreManage</p>
   <form action="/" method="post" enctype="multipart/form-data"><div><input type="file" name="upload">
-  Facility <input type="text" name="facility" value="'+params['id']+'"></div><div><input type="submit"></div></form>' 
+  Facility <input type="text" name="facility" value="'+params['id'].to_s+'"></div><div><input type="submit"></div></form>' 
 end
 
 post '/' do
