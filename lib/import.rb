@@ -21,7 +21,7 @@ class Import
           pm_fields.each do |f|
             row << self.send("pm_#{f.downcase}", r)
           end
-          csv << row
+          (csv << row) if row['SSN'] && row['MRN']
         end
       end
       pm_csv
@@ -55,11 +55,11 @@ class Import
   end
 
   def pm_zip(row)
-    row['ZipCode']
+    row['ZipCode'].to_s.gsub(/[^0-9]/,'')
   end
 
   def pm_ssn(row)
-    row['SSN']
+    row['SSN'].to_s.gsub(/[^0-9]/,'')
   end
 
   def pm_dob(row)
