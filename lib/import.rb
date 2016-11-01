@@ -67,7 +67,7 @@ class Import
   end
 
   def pm_gender(row)
-    row['Sex']
+    row['Sex'][0].upcase
   end
 
   def pm_home(row)
