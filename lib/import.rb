@@ -21,7 +21,7 @@ class Import
           pm_fields.each do |f|
             row << self.send("pm_#{f.downcase}", r)
           end
-          (csv << row) if row['SSN'] && row['MRN']
+          (csv << row) unless row[0].empty? || row[1].empty?
         end
       end
       pm_csv
@@ -29,7 +29,7 @@ class Import
   end
 
   def pm_fields
-    %w(MRN Address Address2 City State Zip SSN DOB Gender Home First Last Facility)
+    %w(MRN SSN Address Address2 City State Zip DOB Gender Home First Last Facility)
   end
 
   private
